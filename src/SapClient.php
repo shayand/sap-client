@@ -62,7 +62,6 @@ class SapClient implements iSapClient
      */
     function checkBusinessPartner(string $national_code, string $phone_number)
     {
-        
         $params = [
             'username' => $this->username,
             'password' => $this->password,
