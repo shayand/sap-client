@@ -1,9 +1,9 @@
 <?php
-namespace mhndev\sapClient;
+namespace shayand\sapClient;
 
 /**
  * Class BusinessPartnerEntity
- * @package mhndev\sapClient
+ * @package shayand\sapClient
  */
 class BusinessPartnerEntity
 {

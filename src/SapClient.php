@@ -1,15 +1,15 @@
 <?php
-namespace mhndev\sapClient;
+namespace shayand\sapClient;
 
-use mhndev\sapClient\Exception\APIResponseConnectException;
-use mhndev\sapClient\Exception\APIResponseException;
-use mhndev\sapClient\Exception\UnAuthenticatedException;
+use shayand\sapClient\Exception\APIResponseConnectException;
+use shayand\sapClient\Exception\APIResponseException;
+use shayand\sapClient\Exception\UnAuthenticatedException;
 use SoapClient;
 use SoapFault;
 
 /**
  * Class SapClient
- * @package mhndev\sapClient
+ * @package shayand\sapClient
  */
 class SapClient implements iSapClient
 {

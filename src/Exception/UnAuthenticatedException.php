@@ -1,9 +1,9 @@
 <?php
-namespace mhndev\sapClient\Exception;
+namespace shayand\sapClient\Exception;
 
 /**
  * Class UnAuthenticatedException
- * @package mhndev\sapClient\Exception
+ * @package shayand\sapClient\Exception
  */
 class UnAuthenticatedException extends APIResponseException
 {

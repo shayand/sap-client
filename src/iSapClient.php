@@ -1,9 +1,9 @@
 <?php
-namespace mhndev\sapClient;
+namespace shayand\sapClient;
 
 /**
  * Interface iSapClient
- * @package mhndev\sapClient
+ * @package shayand\sapClient
  */
 interface iSapClient
 {

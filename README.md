@@ -3,7 +3,7 @@
 you can find usage of this library down here,
 
 ```php
-use mhndev\sapClient\SapClient;
+use shayand\sapClient\SapClient;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

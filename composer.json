@@ -1,16 +1,20 @@
 {
-  "name": "mhndev/sap-client",
+  "name": "shayand/sap-client",
   "type": "library",
   "description": "library for SAP Business One Integration",
   "license": "MIT",
   "authors": [
+    {
+      "name": "Shayan Davarzani",
+      "email": "info@shayand.com"
+    },
     {
       "name": "Majid Abdolhosseini",
       "email": "majid8911303@gmail.com"
     }
   ],
   "autoload": {
-    "psr-4": { "mhndev\\sapClient\\": "src/" }
+    "psr-4": { "shayand\\sapClient\\": "src/" }
   },
   "minimum-stability": "stable",
   "require": {
