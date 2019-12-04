@@ -1,7 +1,7 @@
 {
   "name": "shayand/sap-client",
   "type": "library",
-  "description": "library for SAP Business One Integration",
+  "description": "library for SAP Business1 Integration",
   "license": "MIT",
   "authors": [
     {
