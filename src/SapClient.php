@@ -190,7 +190,7 @@ class SapClient implements iSapClient
 
         $result = $this->getSoapClient()->HealthCheck($params)->HealthCheckResult;
 
-        if($result == 'IS Not Valid User') {
+        if($result == 'Invalid WSUsername and WSPassword.') {
             throw new UnAuthenticatedException;
         }
 
@@ -212,7 +212,7 @@ class SapClient implements iSapClient
         try{
             $this->soap_client = new SoapClient(
                 $this->wsdl_url,
-                ['exception' => true, 'trace' => 1]
+                ['exception' => true, 'trace' => 1 , 'keep_alive' => false]
             );
 
             return $this->soap_client;
