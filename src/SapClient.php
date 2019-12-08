@@ -81,19 +81,18 @@ class SapClient implements iSapClient
 
     /**
      * @param string $full_name
-     * @param string $national_code
      * @param string $mobile
+     * @param string $national_code
      * @param string $email
      * @param int $is_lid
      * @return string business partner unique identifier on sap on success
      * @throws APIResponseConnectException
-     * @throws APIResponseException
      */
     function createBusinessPartner(
         string $full_name,
-        string $national_code,
         string $mobile,
-        string $email,
+        string $national_code = null,
+        string $email = null,
         int $is_lid = 0
     )
     {
