@@ -129,9 +129,9 @@ class SapClient implements iSapClient
     }
 
     /**
-     * @param string $full_name
-     * @param string $national_code
      * @param string $mobile
+     * @param string $national_code
+     * @param string $full_name
      * @param string $email
      * @param int $is_lid
      * @param int $have_access
@@ -141,10 +141,10 @@ class SapClient implements iSapClient
      * @throws UnAuthenticatedException
      */
     function updateBusinessPartner(
-        string $full_name,
-        string $national_code,
         string $mobile,
-        string $email,
+        string $national_code,
+        string $full_name = null,
+        string $email = null,
         int $is_lid = 0,
         int $have_access = 0
     )
