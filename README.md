@@ -74,3 +74,11 @@ die();
 die();
 
 ```
+
+for accessing to local client (SAP Business 1) use below credentials:
+
+````
+DB: azki_test
+USER: b1i
+pass: 1234
+````
