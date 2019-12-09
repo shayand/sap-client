@@ -43,6 +43,8 @@ class SapClient implements iSapClient
      */
     public function __construct(string $wsdl_url, string $username, string $password)
     {
+        ini_set('default_socket_timeout', 2);
+
         $this->username = $username;
         $this->password = $password;
         $this->wsdl_url = $wsdl_url;
@@ -90,8 +92,8 @@ class SapClient implements iSapClient
      */
     function createBusinessPartner(
         string $mobile,
-        string $full_name = null,
         string $national_code = null,
+        string $full_name = null,
         string $email = null,
         int $is_lid = 0
     )
@@ -111,9 +113,9 @@ class SapClient implements iSapClient
 
             if(strpos($result, "New Business Partner CardCode") !== false ) {
                 return $sap_id = explode(':', $result)[1];
+            }else{
+                throw new APIResponseException($result);
             }
-
-
 
         }
         catch (\Exception $e) {
@@ -194,7 +196,7 @@ class SapClient implements iSapClient
             throw new UnAuthenticatedException;
         }
 
-        return ($result == -1) ? true: false;
+        return ($result != -1) ? true: false;
     }
 
 
