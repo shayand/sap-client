@@ -43,7 +43,7 @@ class SapClient implements iSapClient
      */
     public function __construct(string $wsdl_url, string $username, string $password)
     {
-        ini_set('default_socket_timeout', 2);
+        ini_set('default_socket_timeout', 30);
 
         $this->username = $username;
         $this->password = $password;
@@ -214,7 +214,7 @@ class SapClient implements iSapClient
         try{
             $this->soap_client = new SoapClient(
                 $this->wsdl_url,
-                ['exception' => true, 'trace' => 1 , 'keep_alive' => false , 'connection_timeout' => '2']
+                ['exception' => true, 'trace' => 1 , 'keep_alive' => false , 'connection_timeout' => '500000']
             );
 
             return $this->soap_client;
