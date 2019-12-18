@@ -43,7 +43,7 @@ class SapClient implements iSapClient
      */
     public function __construct(string $wsdl_url, string $username, string $password)
     {
-        ini_set('default_socket_timeout', 30);
+        ini_set('default_socket_timeout', 50);
 
         $this->username = $username;
         $this->password = $password;
