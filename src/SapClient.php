@@ -101,14 +101,13 @@ class SapClient implements iSapClient
         $params = [
             'username' => $this->username,
             'password' => $this->password,
+            'fullName' => $full_name,
             'nationalCode' => $national_code,
             'mobile' => $mobile,
-            'fullName' => $full_name,
-            'isLid' => $is_lid,
+            'isLid' => $is_lid
         ];
-
-        if($email != null){
-            $params['email'] = $email;
+        if($email == null){
+            $params['email'] = 'null';
         }
 
         try {
