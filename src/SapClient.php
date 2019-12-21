@@ -104,9 +104,12 @@ class SapClient implements iSapClient
             'nationalCode' => $national_code,
             'mobile' => $mobile,
             'fullName' => $full_name,
-            'email' => $email,
             'isLid' => $is_lid,
         ];
+
+        if($email != null){
+            $params['email'] = $email;
+        }
 
         try {
             $result = $this->getSoapClient()->CreateBusinessPartner($params)->CreateBusinessPartnerResult;
