@@ -327,4 +327,21 @@ class SapClient implements iSapClient
             ->setCountry($country);
     }
 
+    /**
+     * @param InsuranceCertificate $certificate
+     * @return mixed
+     * @throws APIResponseConnectException
+     * @throws APIResponseException
+     */
+    protected function registerInsurrance(
+        InsuranceCertificate $certificate
+    )
+    {
+        $send_array = $certificate->toArray();
+        $send_array['username'] = $this->username;
+        $send_array['password'] = $this->password;
+        $result = $this->getSoapClient()->RegInsuranceCertificate($send_array)->RegInsuranceCertificateResult;
+
+        return $result;
+    }
 }
