@@ -290,6 +290,20 @@ class SapClient implements iSapClient
         $result = $this->getSoapClient()->GetBPByCardCode($params)->GetBPByCardCodeResult;
         return $this->extractBPFromXml($result);    }
 
+    /**
+     * @param $string
+     * @param $start
+     * @param $end
+     * @return false|string
+     */
+    function get_string_between($string, $start, $end){
+        $string = ' ' . $string;
+        $ini = strpos($string, $start);
+        if ($ini == 0) return '';
+        $ini += strlen($start);
+        $len = strpos($string, $end, $ini) - $ini;
+        return substr($string, $ini, $len);
+    }
 
     /**
      * @param string $xml
@@ -297,12 +311,12 @@ class SapClient implements iSapClient
      */
     private function extractBPFromXml(string $xml)
     {
-        $full_name = get_string_between($xml, '<CardName>', '</CardName>');
-        $sap_id = get_string_between($xml, '<CardCode>', '</CardCode>');
-        $mobile = get_string_between($xml, '<Cellular>', '</Cellular>');
-        $email = get_string_between($xml, '<E_Mail>', '</E_Mail>');
-        $country = get_string_between($xml, '<Country>', '</Country>');
-        $national_code = get_string_between($xml, '<AddID>', '</AddID>');
+        $full_name = $this->get_string_between($xml, '<CardName>', '</CardName>');
+        $sap_id = $this->get_string_between($xml, '<CardCode>', '</CardCode>');
+        $mobile = $this->get_string_between($xml, '<Cellular>', '</Cellular>');
+        $email = $this->get_string_between($xml, '<E_Mail>', '</E_Mail>');
+        $country = $this->get_string_between($xml, '<Country>', '</Country>');
+        $national_code = $this->get_string_between($xml, '<AddID>', '</AddID>');
 
         return (new BusinessPartnerEntity())
             ->setSapId($sap_id)
