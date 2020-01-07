@@ -170,7 +170,7 @@ class SapClient implements iSapClient
 
         $result = $this->getSoapClient()->UpdateBusinessPartner($params)->UpdateBusinessPartnerResult;
 
-        if($result == 1) {
+        if($result == "Business Partner Successfully Updated.") {
             ## success update
             return true;
         }
