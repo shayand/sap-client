@@ -148,7 +148,7 @@ class SapClient implements iSapClient
         string $mobile,
         string $national_code,
         string $full_name = null,
-        string $email = null,
+        string $email = "null",
         int $is_lid = 0,
         int $have_access = 0
     )
