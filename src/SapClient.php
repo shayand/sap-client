@@ -220,7 +220,7 @@ class SapClient implements iSapClient
         try{
             $this->soap_client = new SoapClient(
                 $this->wsdl_url,
-                ['exception' => true, 'trace' => 1 , 'keep_alive' => true , 'connection_timeout' => '500000', 'encoding' => 'UTF-8']
+                ['exception' => true, 'trace' => 1 , 'keep_alive' => false , 'connection_timeout' => '500000', 'encoding' => 'UTF-8']
             );
 
             return $this->soap_client;
