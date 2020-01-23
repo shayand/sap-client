@@ -22,23 +22,24 @@ class Constants
     ];
 
     const Insurer = [
-        100 => 'بیمه آسیا',
-        110 => 'بیمه پاسارگاد',
-        120 => 'بیمه ایران',
-        130 => 'بیمه دانا',
-        140 => 'بیمه پارسیان',
-        150 => 'بیمه البرز',
-        160 => 'بیمه معلم',
-        170 => 'بیمه ملت',
-        180 => 'بیمه نوین',
-        190 => 'بیمه سامان',
-        200 => 'بیمه سرمد',
-        210 => 'بیمه رازی',
-        220 => 'بیمه تعاون',
-        230 => 'بیمه آسماری',
+        'iran-insurance' => ['sapKey' => 120,'sapLabel' => 'بیمه ایران'],
+        'asia-insurance' => ['sapKey' => 100,'sapLabel' => 'بیمه آسیا'],
+        'alborz-insurance' => ['sapKey' => 150,'sapLabel' => 'بیمه البرز'],
+        'dana-insurance' => ['sapKey' => 130,'sapLabel' => 'بیمه دانا'],
+        'saman-insurance' => ['sapKey' => 190,'sapLabel' => 'بیمه سامان'],
+        'pasargad-insurance' => ['sapKey' => 110,'sapLabel' => 'بیمه پاسارگاد'],
+        'parsian-insurance' => ['sapKey' => 140,'sapLabel' => 'بیمه پارسیان'],
+        'moalem-insurance' => ['sapKey' => 160,'sapLabel' => 'بیمه معلم'],
+        'novin-insurance' => ['sapKey' => 180,'sapLabel' => 'بیمه نوین'],
+        'razi-insurance' => ['sapKey' => 210,'sapLabel' => 'بیمه رازی'],
+        'day-insurance' => ['sapKey' => null,'sapLabel' => 'بیمه دی'],
+        'mellat-insurance' => ['sapKey' => 170,'sapLabel' => 'بیمه ملت'],
+        'sarmad-insurance' => ['sapKey' => 200,'sapLabel' => 'بیمه سرمد'],
+        'taavon-insurance' => ['sapKey' => 220,'sapLabel' => 'بیمه تعاون'],
+        'asmari-insurance' => ['sapKey' => 230,'sapLabel' => 'بیمه آسماری'],
     ];
 
-    private static $thirdpartyItemCode = [
+    private $thirdpartyItemCode = [
         'MIC0001' => 'بیمه شخص ثالث بیمه ایران',
         'MIC0002' => 'بیمه شخص ثالث بیمه آسیا',
         'MIC0003' => 'بیمه شخص ثالث بیمه البرز',
