@@ -333,7 +333,7 @@ class SapClient implements iSapClient
      * @throws APIResponseConnectException
      * @throws APIResponseException
      */
-    protected function registerInsurrance(
+    public function registerInsurrance(
         InsuranceCertificate $certificate
     )
     {
