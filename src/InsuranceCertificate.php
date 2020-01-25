@@ -43,20 +43,29 @@ class InsuranceCertificate
     private $payable_amount;
 
     /**
+     * @var String $card_name
+     */
+    private $card_name;
+
+    /**
      * InsuranceCertificate constructor.
      * @param String $card_code
+     * @param String $card_name
      * @param Constants $constants
      * @param int $payable_amount
+     * @throws Exception\InvalidInsuranceConstantException
      */
-    public function __construct($card_code, Constants $constants, $payable_amount)
+    public function __construct($card_code, $card_name, Constants $constants, $payable_amount)
     {
         $this->card_code = $card_code;
-        ;
-        $this->insurance_type = $constants['insuranceType']['sapKey'];
-        $this->insurer = $constants['insurer']['sapKey'];
-        $this->item_code = $constants['item']['itemCode'];
-        $this->item_name = $constants['item']['itemName'];
+        $constant_array = $constants->toArray();
+
+        $this->insurance_type = $constant_array['insuranceType']['sapKey'];
+        $this->insurer = $constant_array['insurer']['sapKey'];
+        $this->item_code = $constant_array['item']['itemCode'];
+        $this->item_name = $constant_array['item']['itemName'];
         $this->payable_amount = $payable_amount;
+        $this->card_name = $card_name;
     }
 
     /**
@@ -67,6 +76,7 @@ class InsuranceCertificate
         $send_params = [
             'RegiterType' => 'w',
             'CardCode' => $this->card_code,
+            'CardName' => $this->card_name,
             'InsuranceType' => $this->insurance_type,
             'Insurer' => $this->insurer,
             'ItemCode' => $this->item_code,

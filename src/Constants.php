@@ -8,6 +8,19 @@ use shayand\sapClient\Exception\InvalidInsuranceConstantException;
 
 class Constants
 {
+    /**
+     * @var
+     */
+    private $insuranceType;
+    /**
+     * @var
+     */
+    private $insurer;
+    /**
+     * @var null
+     */
+    private $insuranceProduct;
+
     const InsuranceType = [
         'third-party-insurance'=> ['sapKey' => 10 , 'sapLabel' => 'بیمه شخص ثالث'],
         'special-insurance'=> ['sapKey' => 100 , 'sapLabel' => 'بیمه خاص'],
@@ -42,18 +55,18 @@ class Constants
     ];
 
     private $thirdpartyItemCode = [
-        'MIC0001' => 'بیمه شخص ثالث بیمه ایران',
-        'MIC0002' => 'بیمه شخص ثالث بیمه آسیا',
-        'MIC0003' => 'بیمه شخص ثالث بیمه البرز',
-        'MIC0004' => 'بیمه شخص ثالث بیمه دانا',
-        'MIC0005' => 'بیمه شخص ثالث بیمه سامان',
-        'MIC0006' => 'بیمه شخص ثالث بیمه پاسارگاد',
-        'MIC0007' => 'بیمه شخص ثالث بیمه پارسیان',
-        'MIC0008' => 'بیمه شخص ثالث بیمه معلم',
-        'MIC0009' => 'بیمه شخص ثالث بیمه نوین',
-        'MIC0010' => 'بیمه شخص ثالث بیمه رازی',
-        'MIC0012' => 'بیمه شخص ثالث بیمه ملت',
-        'IC2401005' => 'بیمه شخص ثالث آسماری',
+        'MIC0001' => 'بیمه ایران',
+        'MIC0002' => 'بیمه آسیا',
+        'MIC0003' => 'بیمه البرز',
+        'MIC0004' => 'بیمه دانا',
+        'MIC0005' => 'بیمه سامان',
+        'MIC0006' => 'بیمه پاسارگاد',
+        'MIC0007' => 'بیمه پارسیان',
+        'MIC0008' => 'بیمه معلم',
+        'MIC0009' => 'بیمه نوین',
+        'MIC0010' => 'بیمه رازی',
+        'MIC0012' => 'بیمه ملت',
+        'IC2401005' => 'آسماری',
     ];
 
     private $autobodyItemCode = [
@@ -80,43 +93,54 @@ class Constants
 
     /**
      * Constants constructor.
-     * @param string $insuranceType
-     * @param string $insurer
-     * @param string|null $InsuranceType
-     * @throws InvalidInsuranceConstantException
+     * @param $insuranceType
+     * @param $insurer
+     * @param null $insuranceProduct
      */
     public function __construct($insuranceType,$insurer,$insuranceProduct = null)
     {
+
+        $this->insuranceType = $insuranceType;
+        $this->insurer = $insurer;
+        $this->insuranceProduct = $insuranceProduct;
+    }
+
+    /**
+     * @return array
+     * @throws InvalidInsuranceConstantException
+     */
+    public function toArray()
+    {
         try{
-            $selectedInsuranceType = self::InsuranceType[$insuranceType];
-            $selectedInsurer = self::Insurer[$insurer];
+            $selectedInsuranceType = self::InsuranceType[$this->insuranceType];
+            $selectedInsurer = self::Insurer[$this->insurer];
 
             $final = [
                 'insuranceType' => $selectedInsuranceType,
                 'insurer' => $selectedInsurer,
             ];
 
-            switch ($insuranceType){
+            switch ($this->insuranceType){
                 case 'third-party-insurance':
                     $selectedItemCode = array_search($selectedInsurer['sapLabel'],$this->thirdpartyItemCode);
-                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $selectedInsurer['sapLabel']];
-                break;
+                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $selectedInsurer['sapLabel']];
+                    break;
                 case 'auto-body-insurance':
-                    $selectedItemCode = array_search($insuranceProduct,$this->autobodyItemCode);
-                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
-                break;
+                    $selectedItemCode = array_search($this->insuranceProduct,$this->autobodyItemCode);
+                    $final['item'] = ['itemCode' => 'MO00001','itemName' => $this->insuranceProduct];
+                    break;
                 case 'travel-insurance':
-                    $selectedItemCode = array_search($insuranceProduct,$this->travelItemCode);
-                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
-                break;
+                    $selectedItemCode = array_search($this->insuranceProduct,$this->travelItemCode);
+                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $this->insuranceProduct];
+                    break;
                 case 'fire-insurance':
-                    $selectedItemCode = array_search($insuranceProduct,$this->fireInsurance);
-                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
-                break;
+                    $selectedItemCode = array_search($this->insuranceProduct,$this->fireInsurance);
+                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $this->insuranceProduct];
+                    break;
                 case 'supplementary-health-insurance':
-                    $selectedItemCode = array_search($insuranceProduct,$this->cureInsurance);
-                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
-                break;
+                    $selectedItemCode = array_search($this->insuranceProduct,$this->cureInsurance);
+                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $this->insuranceProduct];
+                    break;
             }
 
             return $final;
