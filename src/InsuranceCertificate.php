@@ -45,19 +45,17 @@ class InsuranceCertificate
     /**
      * InsuranceCertificate constructor.
      * @param String $card_code
-     * @param String $insurance_type
-     * @param String $insurer
-     * @param String $item_code
-     * @param String $item_name
+     * @param Constants $constants
      * @param int $payable_amount
      */
-    public function __construct($card_code, $insurance_type, $insurer, $item_code, $item_name, $payable_amount)
+    public function __construct($card_code, Constants $constants, $payable_amount)
     {
         $this->card_code = $card_code;
-        $this->insurance_type = $insurance_type;
-        $this->insurer = $insurer;
-        $this->item_code = $item_code;
-        $this->item_name = $item_name;
+        ;
+        $this->insurance_type = $constants['insuranceType']['sapKey'];
+        $this->insurer = $constants['insurer']['sapKey'];
+        $this->item_code = $constants['item']['itemCode'];
+        $this->item_name = $constants['item']['itemName'];
         $this->payable_amount = $payable_amount;
     }
 

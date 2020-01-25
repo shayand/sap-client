@@ -4,16 +4,18 @@
 namespace shayand\sapClient;
 
 
+use shayand\sapClient\Exception\InvalidInsuranceConstantException;
+
 class Constants
 {
-    private $InsuranceType = [
+    const InsuranceType = [
         'third-party-insurance'=> ['sapKey' => 10 , 'sapLabel' => 'بیمه شخص ثالث'],
         'special-insurance'=> ['sapKey' => 100 , 'sapLabel' => 'بیمه خاص'],
         'travel-insurance'=> ['sapKey' => 110 , 'sapLabel' => 'بیمه مسافرتی'],
         'organizational-health-insurance'=> ['sapKey' =>  120, 'sapLabel' => 'بیمه درمان گروهی'],
         'device-electronic-insurance'=> ['sapKey' => 130 , 'sapLabel' => 'بیمه لوازم الکترونیک، موبایل، تبلت'],
         'damage-insurance'=> ['sapKey' => 140 , 'sapLabel' => 'بیمه حوادث'],
-        'auto-body-insurance'=> ['sapKey' => 20 , 'sapLabel' => 'بیمه حوادث'],
+        'auto-body-insurance'=> ['sapKey' => 20 , 'sapLabel' => 'بیمه بدنه'],
         'supplementary-health-insurance'=> ['sapKey' => 30 , 'sapLabel' => 'بیمه درمان انفرادی'],
         'fire-insurance'=> ['sapKey' => 40 , 'sapLabel' => 'بیمه آتش سوزی'],
         'life-insurance'=> ['sapKey' => 70 , 'sapLabel' => 'بیمه عمر'],
@@ -75,5 +77,53 @@ class Constants
     private $cureInsurance = [
         'HI0003' => 'بیمه درمان انفرادی'
     ];
+
+    /**
+     * Constants constructor.
+     * @param string $insuranceType
+     * @param string $insurer
+     * @param string|null $InsuranceType
+     * @throws InvalidInsuranceConstantException
+     */
+    public function __construct($insuranceType,$insurer,$insuranceProduct = null)
+    {
+        try{
+            $selectedInsuranceType = self::InsuranceType[$insuranceType];
+            $selectedInsurer = self::Insurer[$insurer];
+
+            $final = [
+                'insuranceType' => $selectedInsuranceType,
+                'insurer' => $selectedInsurer,
+            ];
+
+            switch ($insuranceType){
+                case 'third-party-insurance':
+                    $selectedItemCode = array_search($selectedInsurer['sapLabel'],$this->thirdpartyItemCode);
+                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $selectedInsurer['sapLabel']];
+                break;
+                case 'auto-body-insurance':
+                    $selectedItemCode = array_search($insuranceProduct,$this->autobodyItemCode);
+                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
+                break;
+                case 'travel-insurance':
+                    $selectedItemCode = array_search($insuranceProduct,$this->travelItemCode);
+                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
+                break;
+                case 'fire-insurance':
+                    $selectedItemCode = array_search($insuranceProduct,$this->fireInsurance);
+                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
+                break;
+                case 'supplementary-health-insurance':
+                    $selectedItemCode = array_search($insuranceProduct,$this->cureInsurance);
+                    $final['item'] = ['itemCode',$selectedItemCode,'itemName' => $insuranceProduct];
+                break;
+            }
+
+            return $final;
+        } catch (\Exception $exception){
+            throw new InvalidInsuranceConstantException($exception->getMessage());
+        }
+
+    }
 
 }

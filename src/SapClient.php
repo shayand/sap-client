@@ -342,6 +342,10 @@ class SapClient implements iSapClient
         $send_array['password'] = $this->password;
         $result = $this->getSoapClient()->RegInsuranceCertificate($send_array)->RegInsuranceCertificateResult;
 
-        return $result;
+        if(strpos($result, 'Certificate Registered Successfuly.Document Number') !== false ) {
+            return $result = explode(':', $result)[1];
+        }else{
+            throw new APIResponseException($result);
+        }
     }
 }
