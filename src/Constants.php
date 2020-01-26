@@ -127,15 +127,15 @@ class Constants
             switch ($this->insuranceType){
                 case 'third-party-insurance':
                     $selectedItemCode = array_search($this->insuranceProduct,$this->thirdpartyItemCode);
-                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $selectedInsurer['sapLabel']];
+                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => 'شخص ثالث سواری'];
                     break;
                 case 'auto-body-insurance':
                     $selectedItemCode = array_search($this->insuranceProduct,$this->autobodyItemCode);
-                    $final['item'] = ['itemCode' => 'MO00001','itemName' => $this->insuranceProduct];
+                    $final['item'] = ['itemCode' => 'MO00001','itemName' => 'بدنه سواری'];
                     break;
                 case 'travel-insurance':
                     $selectedItemCode = array_search($this->insuranceProduct,$this->travelItemCode);
-                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $this->insuranceProduct];
+                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => 'مسافرتی'];
                     break;
                 case 'fire-insurance':
                     $selectedItemCode = array_search($this->insuranceProduct,$this->fireInsurance);
@@ -146,7 +146,7 @@ class Constants
                     $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $this->insuranceProduct];
                     break;
                 case 'motor-third-party-insurance':
-                    $final['item'] = ['itemCode' => 'M00002','itemName' => $this->insuranceProduct];
+                    $final['item'] = ['itemCode' => 'M00002','itemName' => 'شخص ثالث موتورسیکلت'];
                     break;
             }
 
