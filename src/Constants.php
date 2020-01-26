@@ -91,6 +91,10 @@ class Constants
         'HI0003' => 'بیمه درمان انفرادی'
     ];
 
+    private $motorInsurance = [
+        'M00002' => 'بیمه موتور'
+    ];
+
     /**
      * Constants constructor.
      * @param $insuranceType
@@ -140,6 +144,9 @@ class Constants
                 case 'supplementary-health-insurance':
                     $selectedItemCode = array_search($this->insuranceProduct,$this->cureInsurance);
                     $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $this->insuranceProduct];
+                    break;
+                case 'motor-third-party-insurance':
+                    $final['item'] = ['itemCode' => 'M00002','itemName' => $this->insuranceProduct];
                     break;
             }
 
