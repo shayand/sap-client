@@ -130,15 +130,15 @@ class Constants
                     $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $selectedInsurer['sapLabel']];
                     break;
                 case 'auto-body-insurance':
-                    $selectedItemCode = array_search($this->insuranceProduct,$this->autobodyItemCode);
+//                    $selectedItemCode = array_search($this->insuranceProduct,$this->autobodyItemCode);
                     $final['item'] = ['itemCode' => 'MO00001','itemName' => 'بدنه سواری'];
                     break;
                 case 'travel-insurance':
-                    $selectedItemCode = array_search($this->insuranceProduct,$this->travelItemCode);
+//                    $selectedItemCode = array_search($this->insuranceProduct,$this->travelItemCode);
                     $final['item'] = ['itemCode' => 'HI0003','itemName' => 'مسافرتی'];
                     break;
                 case 'fire-insurance':
-                    $selectedItemCode = array_search($this->insuranceProduct,$this->fireInsurance);
+//                    $selectedItemCode = array_search($this->insuranceProduct,$this->fireInsurance);
                     $final['item'] = ['itemCode' => 'FI00003','itemName' => 'آتش سوزی مسکونی'];
                     break;
                 case 'supplementary-health-insurance':
