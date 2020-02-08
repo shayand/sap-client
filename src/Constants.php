@@ -92,7 +92,7 @@ class Constants
     ];
 
     private $motorInsurance = [
-        'M00002' => 'بیمه موتور'
+        'M00002' => 'شخص ثالث موتور سیکلت'
     ];
 
     /**
@@ -146,7 +146,7 @@ class Constants
                     $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $this->insuranceProduct];
                     break;
                 case 'motor-third-party-insurance':
-                    $final['item'] = ['itemCode' => 'M00002','itemName' => $this->insuranceProduct];
+                    $final['item'] = ['itemCode' => 'MT00002','itemName' => 'شخص ثالث موتور سیکلت'];
                     break;
             }
 
