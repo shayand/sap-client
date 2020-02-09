@@ -56,18 +56,18 @@ class Constants
     ];
 
     private $thirdpartyItemCode = [
-        'MIC0001' => 'بیمه شخص ثالث بیمه ایران',
-        'MIC0002' => 'بیمه شخص ثالث بیمه آسیا',
-        'MIC0003' => 'بیمه شخص ثالث بیمه البرز',
-        'MIC0004' => 'بیمه شخص ثالث بیمه دانا',
-        'MIC0005' => 'بیمه شخص ثالث بیمه سامان',
-        'MIC0006' => 'بیمه شخص ثالث بیمه پاسارگاد',
-        'MIC0007' => 'بیمه شخص ثالث بیمه پارسیان',
-        'MIC0008' => 'بیمه شخص ثالث بیمه معلم',
-        'MIC0009' => 'بیمه شخص ثالث بیمه نوین',
-        'MIC0010' => 'بیمه شخص ثالث بیمه رازی',
-        'MIC0012' => 'بیمه شخص ثالث بیمه ملت',
-        'IC2401005' => 'بیمه شخص ثالث بیمه آسماری',
+        'MIC0001' => 'third-party-insurance-iran-insurance',
+        'MIC0002' => 'third-party-insurance-asia-insurance',
+        'MIC0003' => 'third-party-insurance-alborz-insurance',
+        'MIC0004' => 'third-party-insurance-dana-insurance',
+        'MIC0005' => 'third-party-insurance-saman-insurance',
+        'MIC0006' => 'third-party-insurance-pasargad-insurance',
+        'MIC0007' => 'third-party-insurance-parsian-insurance',
+        'MIC0008' => 'third-party-insurance-moalem-insurance',
+        'MIC0009' => 'third-party-insurance-novin-insurance',
+        'MIC0010' => 'third-party-insurance-razi-insurance',
+        'MIC0012' => 'third-party-insurance-mellat-insurance',
+        'IC2401005' => 'third-party-insurance-asmari-insurance',
     ];
 
     private $autobodyItemCode = [

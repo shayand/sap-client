@@ -29,47 +29,11 @@ $password = "Admin";
 
 $sap_client = new SapClient($wsdl_internal, $username, $password);
 
-var_dump($sap_client->createBusinessPartner(
-    'Mohammad Ghaderi',
-    '0012497797',
-    '09128049107',
-    'm.ghaderi.d90@gmail.com'
-));
-die();
-
-
-//var_dump($sap_client->checkBusinessPartner('3732981134', '09364517379'));
-//die();
-
-
-var_dump($sap_client->getBusinessPartnerByMobile('09123169242'));
-
 die();
 
 //var_dump($sap_client->getBusinessPartnerByBPSapIdentifier('C0010702'));
 //var_dump($sap_client->getBusinessPartnerByNationalCode('3732981134'));
 
-
-//var_dump($sap_client->healthCheck());
-
-//var_dump($sap_client->createBusinessPartner(
-//    'Majid Abdolhosseini',
-//    '0014297884',
-//    '09124971706',
-//    'majid8911303@gmail.com'
-//));
-//
-//var_dump($sap_client->checkBusinessPartner('0014297884', '09124971706'));
-//die();
-
-
-//
-//var_dump($sap_client->updateBusinessPartner(
-//    'Majid Abdolhosseini',
-//    '0014297884',
-//    '09124971706',
-//    'majid8911303@gmail.com'
-//));
 
 die();
 
