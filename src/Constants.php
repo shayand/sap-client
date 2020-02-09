@@ -33,7 +33,8 @@ class Constants
         'fire-insurance'=> ['sapKey' => 40 , 'sapLabel' => 'بیمه آتش سوزی'],
         'life-insurance'=> ['sapKey' => 70 , 'sapLabel' => 'بیمه عمر'],
         'freight-insurance'=> ['sapKey' => 80 , 'sapLabel' => 'بیمه باربری'],
-        'engineering-insurance'=> ['sapKey' => 90 , 'sapLabel' => 'بیمه مهندسی']
+        'engineering-insurance'=> ['sapKey' => 90 , 'sapLabel' => 'بیمه مهندسی'],
+        'motor-third-party-insurance' => ['sapKey' => 10,'sapLabel' => 'شخص ثالث موتور سیکلت']
     ];
 
     const Insurer = [
@@ -127,7 +128,7 @@ class Constants
             switch ($this->insuranceType){
                 case 'third-party-insurance':
                     $selectedItemCode = array_search($this->insuranceProduct,$this->thirdpartyItemCode);
-                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => $selectedInsurer['sapLabel']];
+                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => 'بیمه شخص ثالث'];
                     break;
                 case 'auto-body-insurance':
 //                    $selectedItemCode = array_search($this->insuranceProduct,$this->autobodyItemCode);
