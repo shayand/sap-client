@@ -136,7 +136,7 @@ class Constants
                     break;
                 case 'travel-insurance':
 //                    $selectedItemCode = array_search($this->insuranceProduct,$this->travelItemCode);
-                    $final['item'] = ['itemCode' => 'HI0003','itemName' => 'مسافرتی'];
+                    $final['item'] = ['itemCode' => 'HI00003','itemName' => 'مسافرتی'];
                     break;
                 case 'fire-insurance':
 //                    $selectedItemCode = array_search($this->insuranceProduct,$this->fireInsurance);
