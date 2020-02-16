@@ -89,7 +89,7 @@ class Constants
     ];
 
     private $cureInsurance = [
-        'HI0003' => 'بیمه درمان انفرادی'
+        'HI00001' => 'درمان انفرادی'
     ];
 
     private $motorInsurance = [
