@@ -128,7 +128,7 @@ class Constants
             switch ($this->insuranceType){
                 case 'third-party-insurance':
                     $selectedItemCode = array_search($this->insuranceProduct,$this->thirdpartyItemCode);
-                    $final['item'] = ['itemCode' => $selectedItemCode,'itemName' => 'شخص ثالث سواری'];
+                    $final['item'] = ['itemCode' => 'MT00001','itemName' => 'شخص ثالث سواری'];
                     break;
                 case 'auto-body-insurance':
 //                    $selectedItemCode = array_search($this->insuranceProduct,$this->autobodyItemCode);
