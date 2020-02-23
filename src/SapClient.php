@@ -72,8 +72,11 @@ class SapClient implements iSapClient
         ];
 
         $result = $this->getSoapClient()->CheckBusinessPartner($params)->CheckBusinessPartnerResult;
+        $status = $result->string[0];
+        $message = $result->string[1];
 
-        if ($result == 'Businees Partner Found.') {
+
+        if ($result == 'Businees Partner Found.' & $status != 404) {
             return true;
         }
         else {
@@ -104,7 +107,8 @@ class SapClient implements iSapClient
             'fullName' => $full_name,
             'nationalCode' => $national_code,
             'mobile' => $mobile,
-            'isLid' => $is_lid
+            'isLid' => $is_lid,
+            'CurrentAddressIndex' => '1'
         ];
         if($email == null){
             $params['email'] = 'null';
@@ -113,12 +117,17 @@ class SapClient implements iSapClient
         try {
             $result = $this->getSoapClient()->CreateBusinessPartner($params)->CreateBusinessPartnerResult;
 
-            if(strpos($result, "New Business Partner CardCode") !== false ) {
-                return $sap_id = explode(':', $result)[1];
-            }else{
-                throw new APIResponseException($result);
-            }
+            if(isset($result->string)){
 
+                $status = $result->string[0];
+                $message = $result->string[1];
+
+                if(strpos($message, "New Business Partner CardCode") !== false ) {
+                    return $sap_id = explode(':', $result)[1];
+                }else{
+                    throw new APIResponseException($result);
+                }
+            }
         }
         catch (\Exception $e) {
             if(get_class($e) == 'SoapFault' && $e->getMessage() == 'Could not connect to host' ) {
@@ -128,8 +137,6 @@ class SapClient implements iSapClient
             }
             throw $e;
         }
-
-
     }
 
     /**
@@ -170,21 +177,21 @@ class SapClient implements iSapClient
 
         $result = $this->getSoapClient()->UpdateBusinessPartner($params)->UpdateBusinessPartnerResult;
 
-        if($result == "Business Partner Successfully Updated.") {
+        $status = $result->string[0];
+        $message = $result->string[1];
+
+        if($message == "Business Partner Successfully Updated.") {
             ## success update
             return true;
         }
 
         ### unauthenticated user
-        elseif($result == 'IS Not Valid User') {
+        elseif($message == 'IS Not Valid User') {
             throw new UnAuthenticatedException;
-        }
-
-        else {
+        } else {
             ## not success
             return false;
         }
-
     }
 
     /**
@@ -197,12 +204,14 @@ class SapClient implements iSapClient
         $params = ['username' => $this->username, 'password' => $this->password];
 
         $result = $this->getSoapClient()->HealthCheck($params)->HealthCheckResult;
+        $status = $result->string[0];
+        $message = $result->string[1];
 
-        if($result == 'Invalid WSUsername and WSPassword.') {
+        if($message == 'Invalid WSUsername and WSPassword.') {
             throw new UnAuthenticatedException;
         }
 
-        return ($result != -1) ? true: false;
+        return ($message != -1  & $status == 200) ? true: false;
     }
 
 

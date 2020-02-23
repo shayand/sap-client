@@ -18,6 +18,7 @@
   },
   "minimum-stability": "stable",
   "require": {
+    "php": ">=7.1.0",
     "ext-soap": "*",
     "ext-json": "*",
     "ext-xml": "*",
