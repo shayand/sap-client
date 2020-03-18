@@ -98,7 +98,9 @@ class SapClient implements iSapClient
         string $national_code = null,
         string $full_name = null,
         string $email = null,
-        int $is_lid = 0
+        int $is_lid = 0,
+        array $profile_data = [],
+        array $delivery_data = []
     )
     {
         $params = [
@@ -112,6 +114,51 @@ class SapClient implements iSapClient
         ];
         if($email == null){
             $params['email'] = 'null';
+        }
+        if(isset($profile_data['BirthDay'])){
+            $params['BirthDay'] = $profile_data['BirthDay'];
+        }
+        if(isset($profile_data['BCity'])){
+            $params['BCity'] = $profile_data['BCity'];
+        }
+        if(isset($profile_data['BBlock'])){
+            $params['BBlock'] = $profile_data['BBlock'];
+        }
+        if(isset($profile_data['BStreet'])){
+            $params['BStreet'] = $profile_data['BStreet'];
+        }
+        if(isset($profile_data['BAddress'])){
+            $params['BAddress'] = $profile_data['BAddress'];
+        }
+        if(isset($profile_data['BAddress2'])){
+            $params['BAddress2'] = $profile_data['BAddress2'];
+        }
+        if(isset($profile_data['BAddress3'])){
+            $params['BAddress3'] = $profile_data['BAddress3'];
+        }
+        if(isset($profile_data['BZipCode'])){
+            $params['BZipCode'] = $profile_data['BZipCode'];
+        }
+        if(isset($profile_data['DCity'])){
+            $params['DCity'] = $profile_data['DCity'];
+        }
+        if(isset($profile_data['DBlock'])){
+            $params['DBlock'] = $profile_data['DBlock'];
+        }
+        if(isset($profile_data['DStreet'])){
+            $params['DStreet'] = $profile_data['DStreet'];
+        }
+        if(isset($profile_data['DAddress'])){
+            $params['DAddress'] = $profile_data['DAddress'];
+        }
+        if(isset($profile_data['DAddress2'])){
+            $params['DAddress2'] = $profile_data['DAddress2'];
+        }
+        if(isset($profile_data['DAddress3'])){
+            $params['DAddress3'] = $profile_data['DAddress3'];
+        }
+        if(isset($profile_data['DZipCode'])){
+            $params['DZipCode'] = $profile_data['DZipCode'];
         }
 
         try {
