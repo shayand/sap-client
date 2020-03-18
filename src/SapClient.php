@@ -171,7 +171,7 @@ class SapClient implements iSapClient
 
                 if($status == '201') {
                     $sap_id = explode(':', $message);
-                    return $sap_id;
+                    return $sap_id[1];
                 }else{
                     throw new APIResponseException($result);
                 }
