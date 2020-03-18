@@ -169,8 +169,9 @@ class SapClient implements iSapClient
                 $status = $result->string[0];
                 $message = $result->string[1];
 
-                if(strpos($message, "New Business Partner CardCode") !== false ) {
-                    return $sap_id = explode(':', $result)[1];
+                if($status == '201') {
+                    $sap_id = explode(':', $message);
+                    return $sap_id;
                 }else{
                     throw new APIResponseException($result);
                 }
