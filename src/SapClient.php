@@ -122,13 +122,13 @@ class SapClient implements iSapClient
             $params['BCity'] = $profile_data['BCity'];
         }
         if(isset($profile_data['BBlock'])){
-            $params['BBlock'] = $profile_data['BBlock'];
+            $params['BBlock'] = $profile_data['BStreet'];
         }
         if(isset($profile_data['BStreet'])){
-            $params['BStreet'] = $profile_data['BStreet'];
+            $params['BStreet'] = $profile_data['BAddress'];
         }
         if(isset($profile_data['BAddress'])){
-            $params['BAddress'] = $profile_data['BAddress'];
+            $params['BAddress'] = $profile_data['BBlock'];
         }
         if(isset($profile_data['BAddress2'])){
             $params['BAddress2'] = $profile_data['BAddress2'];
@@ -139,27 +139,29 @@ class SapClient implements iSapClient
         if(isset($profile_data['BZipCode'])){
             $params['BZipCode'] = $profile_data['BZipCode'];
         }
-        if(isset($profile_data['DCity'])){
-            $params['DCity'] = $profile_data['DCity'];
+        if(isset($delivery_data['DCity'])){
+            $params['DCity'] = $delivery_data['DCity'];
         }
-        if(isset($profile_data['DBlock'])){
-            $params['DBlock'] = $profile_data['DBlock'];
+        if(isset($delivery_data['DBlock'])){
+            $params['DBlock'] = $delivery_data['DStreet'];
         }
-        if(isset($profile_data['DStreet'])){
-            $params['DStreet'] = $profile_data['DStreet'];
+        if(isset($delivery_data['DStreet'])){
+            $params['DStreet'] = $delivery_data['DAddress'];
         }
-        if(isset($profile_data['DAddress'])){
-            $params['DAddress'] = $profile_data['DAddress'];
+        if(isset($delivery_data['DAddress'])){
+            $params['DAddress'] = $delivery_data['DBlock'];
         }
-        if(isset($profile_data['DAddress2'])){
-            $params['DAddress2'] = $profile_data['DAddress2'];
+        if(isset($delivery_data['DAddress2'])){
+            $params['DAddress2'] = $delivery_data['DAddress2'];
         }
-        if(isset($profile_data['DAddress3'])){
-            $params['DAddress3'] = $profile_data['DAddress3'];
+        if(isset($delivery_data['DAddress3'])){
+            $params['DAddress3'] = $delivery_data['DAddress3'];
         }
-        if(isset($profile_data['DZipCode'])){
-            $params['DZipCode'] = $profile_data['DZipCode'];
+        if(isset($delivery_data['DZipCode'])){
+            $params['DZipCode'] = $delivery_data['DZipCode'];
         }
+
+
 
         try {
             $result = $this->getSoapClient()->CreateBusinessPartner($params)->CreateBusinessPartnerResult;
