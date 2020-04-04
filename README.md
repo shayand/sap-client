@@ -22,10 +22,9 @@ function get_string_between($string, $start, $end){
 require "vendor/autoload.php";
 
 $wsdl_internal = "http://192.168.100.34:8081/CheckPartnerService.asmx?wsdl";
-$wsdl_external = "http://81.91.156.134:2275?wsdl";
 
-$username = "Admin";
-$password = "Admin";
+$username = "XXX";
+$password = "XXX";
 
 $sap_client = new SapClient($wsdl_internal, $username, $password);
 
