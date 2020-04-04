@@ -122,7 +122,7 @@ class SapClient implements iSapClient
             $params['BCity'] = $profile_data['BCity'];
         }
         if(isset($profile_data['BBlock'])){
-            $params['BBlock'] = $profile_data['BStreet'];
+            $params['BBlock'] = $profile_data['BBlock'];
         }
         if(isset($profile_data['BStreet'])){
             $params['BStreet'] = $profile_data['BAddress'];
@@ -143,7 +143,7 @@ class SapClient implements iSapClient
             $params['DCity'] = $delivery_data['DCity'];
         }
         if(isset($delivery_data['DBlock'])){
-            $params['DBlock'] = $delivery_data['DStreet'];
+            $params['DBlock'] = $delivery_data['DBlock'];
         }
         if(isset($delivery_data['DStreet'])){
             $params['DStreet'] = $delivery_data['DAddress'];
@@ -160,8 +160,6 @@ class SapClient implements iSapClient
         if(isset($delivery_data['DZipCode'])){
             $params['DZipCode'] = $delivery_data['DZipCode'];
         }
-
-
 
         try {
             $result = $this->getSoapClient()->CreateBusinessPartner($params)->CreateBusinessPartnerResult;
@@ -220,7 +218,6 @@ class SapClient implements iSapClient
             'isLid' => $is_lid,
             'haveAccess' => $have_access
         ];
-
         if($email == null){
             $params['email'] = 'null';
         }
